@@ -4,14 +4,17 @@ using namespace std;
 
 
 //****************************************************************************************
+//Pobiera od uzytkownika nacisniecia klawiszy
 void Manager::getInput() {
     int ch;
 
+    //Przygotowanie do pobierania
     initscr();
     raw();
     keypad(stdscr, TRUE);
     noecho();
 
+    //Proces pobierania
     ch = getch();
     
 
@@ -45,6 +48,7 @@ void Manager::getInput() {
             printw("%c", ch);
         }
 
+    //Koniec pobierania, wracamy do zwyklych ustawien ekranu
     refresh();
     endwin();
     showScreen();

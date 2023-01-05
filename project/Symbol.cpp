@@ -1,9 +1,9 @@
 #include "Symbol.h"
 #include <iterator>
 #include <vector>
-
 using namespace std;
-
+//****************************************************************************************************
+//Pomocnicza metoda zmieniajaca rozmiar calego symbolu(tworzy nowy i zamienia się miejscami ze starym symbolem)
 void Symbol::zmienRozmiar(enum rozmiar co) {
     if(co == rozmiar::powieksz) {
         Symbol symb(symbol::A, rozmiarX + 2, rozmiarY + 1);
@@ -28,14 +28,17 @@ void Symbol::zmienRozmiar(enum rozmiar co) {
 
 //////////////////////////////////////////////////////////////
 
+//Metoda inicjalizujaca wyglad symbolu wedlug zadanego algorytmu dla poszczegolnych symboli.
 void Symbol::tworz(enum symbol jakiSymbol, int rozX, int rozY) {
     screenVecDat_t dane;
 
     int dystans = 0;
     if (jakiSymbol == symbol::A)
     {
+        //Tworzy symbol wiersz po wierszu
         for (int y = 0; y < rozY; y++)
         {
+            //Czesc poczatkowa (do pierwszego wystapienia jakiegos znaku)
             dane.push_back(vector<char>());
             int rozmiar = rozX;
             for (int x = 0; x < rozX / 2 - dystans-1; x++, rozmiar--)
@@ -43,7 +46,7 @@ void Symbol::tworz(enum symbol jakiSymbol, int rozX, int rozY) {
                 dane[y].push_back(' ');
             }
 
-            
+            //Czesc srodkowa (od /)
             dane[y].push_back('/');
             rozmiar--;
 
@@ -60,7 +63,7 @@ void Symbol::tworz(enum symbol jakiSymbol, int rozX, int rozY) {
                     
                 }
             
-
+            //Czesc koncowa (od \ i do konca)
             dane[y].push_back('\\');
             rozmiar--;
 
@@ -72,6 +75,7 @@ void Symbol::tworz(enum symbol jakiSymbol, int rozX, int rozY) {
     }
     else
     {
+        //Gdyby jakis niewiadomy symbol, to zwracamy nic
         return;
     }
 

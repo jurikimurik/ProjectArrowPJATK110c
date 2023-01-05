@@ -2,6 +2,7 @@
 
 #include "DataTypes.h"
 
+// Pomocnicze enum dla poprawienia czytelności programu
 enum class rozmiar
 {
     zmniejsz = -1, powieksz = 1
@@ -12,6 +13,8 @@ enum class symbol
     A = 1
 };
 
+//Klasa Symbol reprezentuje kazdy symboliczny obiekt w programie w postaci ciagu znakow. Miesci w sobie
+//zmienne dotycznace rozmiaru (rozX, rozY) oraz miejsca na monitorze (x, y)
 class Symbol {
 public:
         Symbol(enum symbol co, int rozX, int rozY, int toX = 0, int toY = 0) {

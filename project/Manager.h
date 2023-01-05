@@ -7,6 +7,7 @@
 
 #include <curses.h>
 
+//Pomocniczy enum
 enum class direction
 {
     up = 1,
@@ -15,9 +16,11 @@ enum class direction
     down = 4
 };
 
+//Klasa Manager zajmuje sie calym programem. Nadzoruje i zleca ekranowi oraz symbolom dzialania.
+//Jest mozgiem programu.
 class Manager {
     public:
-
+        //Kontruktor domniemany z symbolem A na samym poczatku.
         Manager() {
 
             Symbol A(symbol::A, 12, 6, 0, 0);
@@ -28,6 +31,7 @@ class Manager {
 
         ////////////////////////////////////////////////////////////////////
 
+        //Zajmuje sie wypisywaniem ciagu danych na ekran
         void showScreen() {
             ekran.oczyszcz();
             for (auto &symb : daneSymboli)
@@ -39,14 +43,17 @@ class Manager {
 
         ////////////////////////////////////////////////////////////////////
 
+        //Pobiera od uzytkownika kliknięcia
         void getInput();
 
         ////////////////////////////////////////////////////////////////////
 
+        //Probuje przemieścić określony symbol w ktoryms kierunku
         bool moveSymbol(int indexSymbolu, enum direction kierunek, int ile = 1);
 
         ////////////////////////////////////////////////////////////////////
 
+        //Zmienia rozmiar symbolu o jeden
         bool changeSize(int indexSymbolu, rozmiar zwCzyZm);
 
 

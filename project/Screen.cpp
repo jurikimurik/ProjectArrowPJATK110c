@@ -2,6 +2,7 @@
 using namespace std;
 
 //************************************************************************************************************************************************************************
+//Zajmuje sie odswiezaniem ekranu
 void Screen::odswiez() {
     screenVecDat_t dane = getData();
 
@@ -14,6 +15,7 @@ void Screen::odswiez() {
 }
 
 //************************************************************************************************************************************************************************
+//Początkowo inicjalizuje niezbędne dane
 void Screen::initialize(char znak) {
     screenVecDat_t dane = getData();
     for (int y = 0; y < getHeight(); y++)
@@ -30,6 +32,7 @@ void Screen::initialize(char znak) {
 }
 
 //************************************************************************************************************************************************************************
+//Sprawdza czy dane mieszcza sie na ekranie
 bool Screen::checkPlace(screenVecDat_t dane, int obj_x, int obj_y) {
     if (obj_x < 0 || obj_y < 0 || dane.size() + obj_y > getHeight() || dane[0].size() + obj_x > getWidth())
     {
@@ -41,6 +44,7 @@ bool Screen::checkPlace(screenVecDat_t dane, int obj_x, int obj_y) {
 
 
 //************************************************************************************************************************************************************************
+//Metoda zwracajaca wartosci bool jezeli sie uda lub sie nie uda umiescic na ekranie wyslane do niej dane
 bool Screen::addObject(screenVecDat_t dane, int obj_x, int obj_y) {
     if(!checkPlace(dane, obj_x, obj_y)) {
         return false;
@@ -66,6 +70,7 @@ bool Screen::addObject(screenVecDat_t dane, int obj_x, int obj_y) {
 }
 
 //************************************************************************************************************************************************************************
+//Zajmuje sie oczyszczeniem ekranu od symboli
 void Screen::oczyszcz(char znak) {
     system("clear");
     screenVecDat_t dane = getData();
