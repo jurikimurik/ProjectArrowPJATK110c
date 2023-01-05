@@ -6,9 +6,7 @@ int main() {
     Manager manager;
 
         //W kolko pobieramy od uzytkownika dane dotyczace wprowadzania
-        while(true) {
-            manager.getInput();
-        }
+        manager.getInput();
        
 
 }

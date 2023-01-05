@@ -6,17 +6,17 @@ using namespace std;
 //****************************************************************************************
 //Pobiera od uzytkownika nacisniecia klawiszy
 void Manager::getInput() {
-    int ch;
+    while(true) {
+        int ch;
 
-    //Przygotowanie do pobierania
-    initscr();
-    raw();
-    keypad(stdscr, TRUE);
-    noecho();
+        // Przygotowanie do pobierania
+        initscr();
+        raw();
+        keypad(stdscr, TRUE);
+        noecho();
 
-    //Proces pobierania
-    ch = getch();
-    
+        // Proces pobierania
+        ch = getch();
 
         switch (ch)
         {
@@ -35,23 +35,27 @@ void Manager::getInput() {
         case KEY_RIGHT:
             moveSymbol(0, direction::right);
             break;
-        
+
         case 43 /* + */:
             changeSize(0, rozmiar::powieksz);
             break;
-        
+
         case 45 /* - */:
             changeSize(0, rozmiar::zmniejsz);
             break;
+
+        case 113 /* q */:
+            return;
 
         default:
             printw("%c", ch);
         }
 
-    //Koniec pobierania, wracamy do zwyklych ustawien ekranu
-    refresh();
-    endwin();
-    showScreen();
+        // Koniec pobierania, wracamy do zwyklych ustawien ekranu
+        refresh();
+        endwin();
+        showScreen();
+    }
 }
 
 //****************************************************************************************
