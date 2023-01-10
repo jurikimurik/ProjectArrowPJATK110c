@@ -1,8 +1,7 @@
 #ifndef MANAGER
-
-#include "Symbol.h"
+#define MANAGER 1
+#include "SymbolA.h"
 #include "Screen.h"
-#include "DataTypes.h"
 #include <termios.h>
 
 #include <curses.h>
@@ -23,10 +22,15 @@ class Manager {
         //Kontruktor domniemany z symbolem A na samym poczatku.
         Manager() {
 
-            Symbol A(symbol::A, 12, 6, 0, 0);
+            SymbolA *A = new SymbolA(12, 6, 0, 0);
             daneSymboli.push_back(A);
 
             showScreen();
+        }
+
+        ~Manager() {
+            for(auto wsk : daneSymboli)
+                delete wsk;
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -36,7 +40,7 @@ class Manager {
             ekran.oczyszcz();
             for (auto &symb : daneSymboli)
             {
-                ekran.addObject(symb.data(), symb.getX(), symb.getY());
+                ekran.addObject(symb->data(), symb->getX(), symb->getY());
             }
             ekran.odswiez();
         }
@@ -59,7 +63,7 @@ class Manager {
 
     private:
         Screen ekran;
-        std::vector<Symbol> daneSymboli;
+        std::vector<Symbol*> daneSymboli;
 };
 
 #endif

@@ -1,4 +1,5 @@
-#ifndef SCREEN
+#ifndef PROG_SCREEN
+#define PROG_SCREEN 1
 #include "DataTypes.h"
 #include <iostream>
 

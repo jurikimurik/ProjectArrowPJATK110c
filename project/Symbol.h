@@ -2,23 +2,11 @@
 
 #include "DataTypes.h"
 
-// Pomocnicze enum dla poprawienia czytelności programu
-enum class rozmiar
-{
-    zmniejsz = -1, powieksz = 1
-};
-
-enum class symbol
-{
-    A = 1
-};
-
 //Klasa Symbol reprezentuje kazdy symboliczny obiekt w programie w postaci ciagu znakow. Miesci w sobie
 //zmienne dotycznace rozmiaru (rozX, rozY) oraz miejsca na monitorze (x, y)
-class Symbol {
+struct Symbol {
 public:
-        Symbol(enum symbol co, int rozX, int rozY, int toX = 0, int toY = 0) {
-            tworz(co, rozX, rozY);
+        Symbol(int rozX, int rozY, int toX = 0, int toY = 0) {
 
             x = toX;
             y = toY;
@@ -29,7 +17,7 @@ public:
 
 /// @brief ///////////////////////////////////////////////////////////////////
 
-        void zmienRozmiar(enum rozmiar co);
+        virtual void zmienRozmiar(enum rozmiar co) = 0;
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +25,7 @@ public:
             return symbolData;
         }
 
-        void tworz(enum symbol jakiSymbol, int rozX, int rozY);
+        virtual void tworz(int rozX, int rozY) = 0;
 
         //////////////////////////////////////////////////////////////////////////////
 
@@ -57,8 +45,6 @@ public:
             y = toY;
         }
 
-    private:
-
         screenVecDat_t symbolData;
 
         int rozmiarX = 0;
@@ -66,6 +52,7 @@ public:
 
         int x = 0;
         int y = 0;
+        
 };
 
 #endif
