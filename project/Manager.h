@@ -22,7 +22,25 @@ class Manager {
         //Kontruktor domniemany z symbolem A na samym poczatku.
         Manager() {
 
-            SymbolA *A = new SymbolA(12, 6, 0, 0);
+            //Mechanizm wprowadzenia poprawnej dlugosci i wysokosci
+            int sizeX;
+            int sizeY;
+            //Dobra dlugosc moze byc tylko taka, gdy jest wieksza w 2 razy od wysokosci (dla dobrych proporcji)
+            bool isGoodResolution = false;
+            while (!isGoodResolution) {
+                std::cout << "Wprowadz rozmiar wedlug X: ";
+                std::cin >> sizeX;
+
+                std::cout << "Wprowadz rozmiar wedlug Y: ";
+                std::cin >> sizeY;
+
+                if(sizeX / 2 == sizeY)
+                    isGoodResolution = true;
+                else
+                    std::cout << "Rozmiar symbolu X powinien byc dwa razy wiekszy od Y!" << std::endl;
+            }
+
+                        SymbolA *A = new SymbolA(sizeX, sizeY, 0, 0);
             daneSymboli.push_back(A);
 
             showScreen();
